@@ -1,0 +1,9 @@
+LedBlinker	KEYWORD1
+setPhaseTime	KEYWORD2
+setPattern	KEYWORD2
+setOn	KEYWORD2
+setOff	KEYWORD2
+update	KEYWORD2
+setAllOn	KEYWORD2
+setAllOff	KEYWORD2
+updateAll	KEYWORD2
