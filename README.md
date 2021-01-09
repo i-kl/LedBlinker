@@ -1,5 +1,5 @@
 # LedBlinker
-An Arduino library for flashing one or more LEDs. The goal of this library is to provide a simple mechanism to control status LEDs of your project. For instance you have a green (operation mode) and a red (error state) LED and want to show different blinking in case of different operational and error situations, e.g. a periodical flashing for stand-by and normal blinking for normal operation.
+An Arduino library for flashing one or more LEDs. The goal of this library is to provide a simple mechanism to control status LEDs of your project. For instance, you have a green (operation mode) and a red (error state) LED and want to show different blinking in case of different operational and error situations, e.g. a periodical flashing for stand-by and normal blinking for normal operation.
 
 Tested on Arduino Uno board and also on ESP-based Wemos D1 and ESP-01 boards.
 
@@ -38,12 +38,12 @@ See also the header file and the ![1st example sketch](https://github.com/i-kl/L
 class LedBlinker
 ```
 One instance of this class can handle one LED attached to a given GPIO pin. The pin number and the active high or low state must be defined in the constructor.
-You can write this for using the built-in LED (assuming atcive high level, i.e. the GPIO pin must be switched to HIGH to feed the LED)
+You can write this for using the built-in LED (assuming active high level, i.e. the GPIO pin must be switched to HIGH to feed the LED)
 ```C++
 LedBlinker led {LED_BUILTIN, LedBlinker::ActiveLevel::ACTIVE_HIGH};
 ```
 ### Blinking pattern - bit mask
-Also you need to setup the blinking pattern, which is a bit mask where bit `1` represents the ON state. There are some predefined ones like `SPEED_MEDIUM` (which is a blinking with freq 2.5Hz and 50% duty cycle, i.e. symetrical) or `ONE_SHORT_FLASH` (which is just a 100ms flash in each 2 seconds).
+Also you need to setup the blinking pattern, which is a bit mask where bit `1` represents the ON state. There are some predefined ones like `SPEED_MEDIUM` (which is a blinking with freq 2.5Hz and 50% duty cycle, i.e. symmetrical square wavee) or `ONE_SHORT_FLASH` (which is just a 100ms flash in each 2 seconds).
 ```C++
 led.setPattern(LedBlinker::Pattern::SPEED_MEDIUM);
 ```
@@ -52,9 +52,9 @@ These predefined patterns (i.e. ON/OFF bit masks) contain **20** used bits. If y
 ```C++
 led.setPattern(0b001110000010100, 15); // super fancy blinking, 15-bit long pattern
 ```
-Or just use a macro (or any contant or non-constant variable)
+Or just use a macro (or any content or non-constant variable)
 ```C++
-#define MY_ALERT_BLINKING					0x55555555
+#define MY_ALERT_BLINKING    0x55555555
 ...
 led.setPattern(MY_ALERT_BLINKING, 32);
 ```
@@ -79,7 +79,6 @@ Note: the phase time must be set to zero if the update() is timed by an interrup
 The update() method needs to be invoked periodically! There are more ways to do this. A simple solution would be calling the `update()` method in the Arduino's `loop()` function. If your `loop()` execution time is predicable and short compared to the LED's phase (i.e. refresh) time, you can do this. Otherwise, if a more precise timing needed and/or you `loop()` can take long then call the `update()` method from an interrupt/timer-based routine. In this case, the **phase time must be set to zero** since the timing is done by the interrupt configured by you.
 
 ### Multiple LEDs - updateAll()
-For each individual LED (attached to different GPIO pins) you must create a `LedBlinker` instance. If you do so the class methods `updateAll()`, `setAllOn()`, `setAllOff()` can be used in order to refresh/command each LEDs in one single function call. This is unfortunatelly not supported on AVR based boards (due to lack of `std::vector` used in the library code).
+For each individual LED (attached to different GPIO pins) you must create a `LedBlinker` instance. If you do so the class methods `updateAll()`, `setAllOn()`, `setAllOff()` can be used in order to refresh/command each LED in one single function call. This is unfortunately not supported on AVR based boards (due to lack of `std::vector` used in the library code).
 
-See example sketch `02_MultipleLeds`.
-
+See also the ![2nd example sketch](https://github.com/i-kl/LedBlinker/blob/main/examples/02_MultipleLeds/02_MultipleLeds.ino)
