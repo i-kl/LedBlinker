@@ -1,10 +1,12 @@
 # LedBlinker
-An Arduino library for flashing one or more LEDs. The goal of this library is to provide a simple mechanism to control status LEDs of your project. For instance, you have a green (operation mode) and a red (error state) LED and want to show different blinking in case of different operational and error situations, e.g. a periodical flashing for stand-by and normal blinking for normal operation.
+**An Arduino library for flashing one or more LEDs. The goal of this library is to provide a simple mechanism to control status LEDs of your project.** For instance, you have a green (operation mode) and a red (error state) LED and want to show different blinking in case of different operational and error situations, e.g. a periodical flashing for stand-by and normal blinking for normal operation.
 
 Tested on Arduino Uno board and also on ESP-based Wemos D1 and ESP-01 boards.
 
 ## TL;DR
 ```C++
+#include <LedBlinker.h>
+
 LedBlinker greenLed   {12, LedBlinker::ActiveLevel::ACTIVE_HIGH};
 LedBlinker yellowLed  {13, LedBlinker::ActiveLevel::ACTIVE_HIGH};
 LedBlinker redLed     {14, LedBlinker::ActiveLevel::ACTIVE_HIGH};
