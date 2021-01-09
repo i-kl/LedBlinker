@@ -42,9 +42,9 @@ LedBlinker Led {LED_BUILTIN, LedBlinker::ActiveLevel::ACTIVE_HIGH};
 
 
 // just some ways to define/rename some patterns if you want
-#define MY_ALERT_BLINKING					LedBlinker::Pattern::SPEED_MAX
-constexpr uint32_t MY_STANDBY_BLINKING		= static_cast<uint32_t>(LedBlinker::Pattern::ONE_SHORT_FLASH);
-constexpr uint32_t MY_FANCY_BLINKING		= 1484 * __LINE__ + 33;
+#define MY_ALERT_BLINKING                LedBlinker::Pattern::SPEED_MAX
+constexpr uint32_t MY_STANDBY_BLINKING = static_cast<uint32_t>(LedBlinker::Pattern::ONE_SHORT_FLASH);
+constexpr uint32_t MY_FANCY_BLINKING =   1484 * __LINE__ + 33;
 
 
 void setup()
@@ -116,12 +116,12 @@ void loop()
 
 	case 3:
 	  Serial.println("(case 3) very fast blinking (f=5Hz, 50% duty)");
-	  Led.setPattern(MY_ALERT_BLINKING); // see
+	  Led.setPattern(MY_ALERT_BLINKING); // see macro definition above
 	  break;
 
 	case 4:
 	  Serial.println("(case 4) just a short flash in each 2 seconds");
-	  Led.setPattern(MY_STANDBY_BLINKING);
+	  Led.setPattern(MY_STANDBY_BLINKING); // see constexpr above
 	  break;
 
 	case 5:

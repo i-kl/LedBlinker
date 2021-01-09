@@ -32,23 +32,21 @@ SOFTWARE.
 
 // **************************************************************************
 // Please see example "01_PatternDemo" first! Here the usage of multiple LEDs
-// are shown only, the methods and different patterns are explained at
-// example "01_PatternDemo".
+// is shown only, the methods and different patterns are explained at example
+// "01_PatternDemo".
 //
-// The updateAll() method does not support AVR based boards like Arduino Uno!
-// Use ESP8266 or ESP32 for this demo.
+// The updateAll() method is not supported for AVR based boards like Arduino
+// Uno! Use ESP8266 or ESP32 for this demo.
 // **************************************************************************
 
 
 // LedBlinker instances
-LedBlinker greenLed		{12, LedBlinker::ActiveLevel::ACTIVE_HIGH};
-LedBlinker yellowLed	{13, LedBlinker::ActiveLevel::ACTIVE_HIGH};
-LedBlinker redLed		{14, LedBlinker::ActiveLevel::ACTIVE_HIGH};
+LedBlinker greenLed  {12, LedBlinker::ActiveLevel::ACTIVE_HIGH};
+LedBlinker yellowLed {13, LedBlinker::ActiveLevel::ACTIVE_HIGH};
+LedBlinker redLed    {14, LedBlinker::ActiveLevel::ACTIVE_HIGH};
 
 void setup()
 {
-	Serial.begin(9600);
-
 	greenLed.setPattern(0b001,3);
 	greenLed.setPhaseTime(500);
 

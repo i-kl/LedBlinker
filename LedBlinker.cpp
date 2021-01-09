@@ -120,9 +120,11 @@ void LedBlinker::update()
 		// store the new state
 		m_ledState = bNewLedState;
 
-		// feed the output led, change polarity if needed
+		// change the polarity if needed
 		if (m_activeState == ActiveLevel::ACTIVE_LOW)
 			bNewLedState = !bNewLedState;
+		
+		// feed the output led
 		digitalWrite(m_iLedPin, bNewLedState ? HIGH : LOW);
 	}
 
