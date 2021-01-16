@@ -1,0 +1,18 @@
+{
+    "name": "LedBlinker",
+    "version": "1.0.2",
+    "description": "The goal of this library is to provide a simple mechanism to control one or more status LEDs of your project: just configure the LED object (pin, level) and change the blinking pattern (as bitmask) and speed any time you want a new 'Tempo and Rhythm'.",
+    "keywords": "leds, arduino, arduino-library, led, blink, blinker, non-blocking, led-blink",
+    "repository":
+    {
+        "type": "git",
+        "url": "https://github.com/i-kl/LedBlinker"
+    },
+    "authors":
+    {
+        "name": "Istvan Klezli",
+        "maintainer": true    
+    },
+    "license": "MIT",
+    "frameworks": "Arduino"
+}
